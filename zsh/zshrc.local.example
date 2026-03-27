@@ -1,0 +1,10 @@
+# Put your machine-specific or private settings here.
+# This file should NOT be committed with secrets.
+
+# Example:
+# export PATH="$HOME/.opencode/bin:$PATH"
+# export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3
+# export GOOGLE_CLIENT_ID="..."
+# export GOOGLE_CLIENT_SECRET="..."
+# export GOOGLE_REFRESH_TOKEN="..."
+# export GOG_ACCOUNT="you@example.com"

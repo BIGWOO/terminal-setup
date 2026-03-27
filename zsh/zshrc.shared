@@ -1,0 +1,48 @@
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.local/bin:$PATH"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Ghostty over SSH fallback: prefer xterm-256color for stable key handling on remote hosts
+if [[ -n "$SSH_CONNECTION" && ( "$TERM" == "xterm-ghostty" || "$TERM" == "ghostty" ) ]]; then
+  export TERM="xterm-256color"
+fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+autoload -Uz compinit
+compinit
+
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
+if [[ -o interactive && -z "$SSH_CONNECTION" ]]; then
+  command -v atuin >/dev/null 2>&1 && eval "$(atuin init zsh)"
+fi
+
+# Stable terminal erase/keymap for local terminals and SSH
+[[ -t 0 ]] && stty erase '^?'
+bindkey -e
+bindkey '^?' backward-delete-char
+bindkey '^H' backward-delete-char
+bindkey '^[[3~' delete-char
+bindkey '^[[D' backward-char
+bindkey '^[[C' forward-char
+bindkey '^[OD' backward-char
+bindkey '^[OC' forward-char
+
+if [[ -o interactive && -z "$SSH_CONNECTION" ]]; then
+  [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ] && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+[ -f /opt/homebrew/share/google-cloud-sdk/path.zsh.inc ] && source /opt/homebrew/share/google-cloud-sdk/path.zsh.inc
+[ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ] && source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+
+if [[ -o interactive && -z "$SSH_CONNECTION" && "$TERM_PROGRAM" == "iTerm.app" ]]; then
+  [ -f "$HOME/.iterm2_shell_integration.zsh" ] && source "$HOME/.iterm2_shell_integration.zsh"
+fi
+[ -f "$HOME/.openclaw/completions/openclaw.zsh" ] && source "$HOME/.openclaw/completions/openclaw.zsh"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
