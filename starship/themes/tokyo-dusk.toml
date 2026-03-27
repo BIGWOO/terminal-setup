@@ -1,8 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Default theme: 03 東京黃昏
-# Use scripts/switch-starship-theme.sh to switch themes.
-
 format = """
 [](surface0)\
 $username\

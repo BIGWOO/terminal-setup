@@ -1,8 +1,5 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Default theme: 03 東京黃昏
-# Use scripts/switch-starship-theme.sh to switch themes.
-
 format = """
 [](surface0)\
 $username\
@@ -30,7 +27,7 @@ $cmd_duration\
 $line_break\
 $character"""
 
-palette = 'bigwoo_tokyo_dusk'
+palette = 'bigwoo_nordic_monolith'
 
 [username]
 show_always = false
@@ -71,42 +68,42 @@ format = '[[($all_status$ahead_behind )](fg:crust bg:teal)]($style)'
 [c]
 symbol = " "
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [php]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [java]
 symbol = " "
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [python]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:text bg:mauve)]($style)'
 
 [docker_context]
 symbol = ""
@@ -130,9 +127,9 @@ disabled = true
 
 [character]
 disabled = false
-success_symbol = '[❯](bold fg:green)'
+success_symbol = '[❯](bold fg:teal)'
 error_symbol = '[❯](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_symbol = '[❮](bold fg:teal)'
 vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
 vimcmd_replace_symbol = '[❮](bold fg:lavender)'
 vimcmd_visual_symbol = '[❮](bold fg:yellow)'
@@ -145,30 +142,30 @@ disabled = false
 show_notifications = true
 min_time_to_notify = 45000
 
-[palettes.bigwoo_tokyo_dusk]
-rosewater = "#F5E0DC"
-flamingo = "#EBA0AC"
-pink = "#F5C2E7"
-mauve = "#9D7CD8"
-red = "#F7768E"
-maroon = "#B85C7A"
-peach = "#FF9E64"
-yellow = "#E0AF68"
-green = "#73DACA"
-teal = "#73DACA"
-sky = "#7DCFFF"
-sapphire = "#7AA2F7"
-blue = "#7AA2F7"
-lavender = "#B4BEFE"
-text = "#C0CAF5"
-subtext1 = "#A9B1D6"
-subtext0 = "#9AA5CE"
-overlay2 = "#787C99"
-overlay1 = "#565F89"
-overlay0 = "#414868"
-surface2 = "#414868"
-surface1 = "#2F3549"
-surface0 = "#1F2335"
-base = "#1A1B26"
-mantle = "#16161E"
-crust = "#11111B"
+[palettes.bigwoo_nordic_monolith]
+rosewater = "#ECEFF4"
+flamingo = "#E5E9F0"
+pink = "#D8DEE9"
+mauve = "#4C566A"
+red = "#BF616A"
+maroon = "#A3BE8C"
+peach = "#88C0D0"
+yellow = "#EBCB8B"
+green = "#8FBCBB"
+teal = "#8FBCBB"
+sky = "#88C0D0"
+sapphire = "#81A1C1"
+blue = "#81A1C1"
+lavender = "#D8DEE9"
+text = "#ECEFF4"
+subtext1 = "#E5E9F0"
+subtext0 = "#D8DEE9"
+overlay2 = "#616E88"
+overlay1 = "#4C566A"
+overlay0 = "#434C5E"
+surface2 = "#3B4252"
+surface1 = "#2E3440"
+surface0 = "#2E3440"
+base = "#242933"
+mantle = "#1F2430"
+crust = "#11151C"

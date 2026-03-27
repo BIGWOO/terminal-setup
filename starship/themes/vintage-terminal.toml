@@ -1,18 +1,15 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Default theme: 03 東京黃昏
-# Use scripts/switch-starship-theme.sh to switch themes.
-
 format = """
 [](surface0)\
 $username\
 $hostname\
-[](bg:blue fg:surface0)\
+[](fg:surface0 bg:peach)\
 $directory\
-[](bg:teal fg:blue)\
+[](fg:peach bg:green)\
 $git_branch\
 $git_status\
-[](fg:teal bg:mauve)\
+[](fg:green bg:mauve)\
 $php\
 $python\
 $golang\
@@ -30,7 +27,7 @@ $cmd_duration\
 $line_break\
 $character"""
 
-palette = 'bigwoo_tokyo_dusk'
+palette = 'bigwoo_vintage_terminal'
 
 [username]
 show_always = false
@@ -46,7 +43,7 @@ style = "bg:surface0 fg:text"
 format = '[ $hostname ]($style)'
 
 [directory]
-style = "bg:blue fg:crust"
+style = "bg:peach fg:crust"
 format = "[ $path ]($style)"
 truncation_length = 4
 truncate_to_repo = false
@@ -61,52 +58,52 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:teal"
-format = '[[ $symbol $branch ](fg:crust bg:teal)]($style)'
+style = "bg:green"
+format = '[[ $symbol $branch ](fg:crust bg:green)]($style)'
 
 [git_status]
-style = "bg:teal"
-format = '[[($all_status$ahead_behind )](fg:crust bg:teal)]($style)'
+style = "bg:green"
+format = '[[($all_status$ahead_behind )](fg:crust bg:green)]($style)'
 
 [c]
 symbol = " "
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [php]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [java]
 symbol = " "
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version) ](fg:text bg:mauve)]($style)'
 
 [python]
 symbol = ""
 style = "bg:mauve"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:mauve)]($style)'
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:text bg:mauve)]($style)'
 
 [docker_context]
 symbol = ""
@@ -145,30 +142,30 @@ disabled = false
 show_notifications = true
 min_time_to_notify = 45000
 
-[palettes.bigwoo_tokyo_dusk]
-rosewater = "#F5E0DC"
-flamingo = "#EBA0AC"
-pink = "#F5C2E7"
-mauve = "#9D7CD8"
-red = "#F7768E"
-maroon = "#B85C7A"
-peach = "#FF9E64"
-yellow = "#E0AF68"
-green = "#73DACA"
-teal = "#73DACA"
-sky = "#7DCFFF"
-sapphire = "#7AA2F7"
-blue = "#7AA2F7"
-lavender = "#B4BEFE"
-text = "#C0CAF5"
-subtext1 = "#A9B1D6"
-subtext0 = "#9AA5CE"
-overlay2 = "#787C99"
-overlay1 = "#565F89"
-overlay0 = "#414868"
-surface2 = "#414868"
-surface1 = "#2F3549"
-surface0 = "#1F2335"
-base = "#1A1B26"
-mantle = "#16161E"
-crust = "#11111B"
+[palettes.bigwoo_vintage_terminal]
+rosewater = "#F5E6C8"
+flamingo = "#E6C7A1"
+pink = "#D7A86E"
+mauve = "#8B4513"
+red = "#C26D2C"
+maroon = "#9C5B1B"
+peach = "#FFB000"
+yellow = "#D9A441"
+green = "#32CD32"
+teal = "#4FAE4E"
+sky = "#9BCB6C"
+sapphire = "#6A8F4E"
+blue = "#A0A0A0"
+lavender = "#D1BFA3"
+text = "#E8DEC9"
+subtext1 = "#D3C8B2"
+subtext0 = "#B8AF9C"
+overlay2 = "#8A806F"
+overlay1 = "#5E4C3E"
+overlay0 = "#3B2C25"
+surface2 = "#3A2A1C"
+surface1 = "#241B16"
+surface0 = "#101010"
+base = "#0B0B0B"
+mantle = "#080808"
+crust = "#050505"

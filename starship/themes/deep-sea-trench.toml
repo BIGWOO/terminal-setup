@@ -1,0 +1,158 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](surface0)\
+$username\
+$hostname\
+[](bg:green fg:surface0)\
+$directory\
+[](bg:teal fg:green)\
+$git_branch\
+$git_status\
+[](fg:teal bg:overlay1)\
+$php\
+$python\
+$golang\
+$c\
+$rust\
+$java\
+$kotlin\
+$haskell\
+[](fg:overlay1 bg:lavender)\
+$time\
+[ ](fg:lavender)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'bigwoo_deep_sea_trench'
+
+[username]
+show_always = false
+style_user = "bg:surface0 fg:text"
+style_root = "bg:surface0 fg:text"
+format = '[ $user ]($style)'
+
+[hostname]
+disabled = false
+ssh_only = false
+trim_at = "."
+style = "bg:surface0 fg:text"
+format = '[ $hostname ]($style)'
+
+[directory]
+style = "bg:green fg:crust"
+format = "[ $path ]($style)"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:teal"
+format = '[[ $symbol $branch ](fg:text bg:teal)]($style)'
+
+[git_status]
+style = "bg:teal"
+format = '[[($all_status$ahead_behind )](fg:text bg:teal)]($style)'
+
+[c]
+symbol = " "
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[php]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[java]
+symbol = " "
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version) ](fg:text bg:overlay1)]($style)'
+
+[python]
+symbol = ""
+style = "bg:overlay1"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:text bg:overlay1)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:lavender"
+format = '[[  $time ](fg:crust bg:lavender)]($style)'
+
+[line_break]
+disabled = true
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "fg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.bigwoo_deep_sea_trench]
+rosewater = "#E6FFF9"
+flamingo = "#BFE3D9"
+pink = "#88C0D0"
+mauve = "#0A2E36"
+red = "#C8555D"
+maroon = "#005F73"
+peach = "#0A9396"
+yellow = "#E9D8A6"
+green = "#94D2BD"
+teal = "#005F73"
+sky = "#0A9396"
+sapphire = "#0A6C74"
+blue = "#0A6C74"
+lavender = "#E9D8A6"
+text = "#ECFFF8"
+subtext1 = "#CDE9E0"
+subtext0 = "#9BCBBE"
+overlay2 = "#4B7D83"
+overlay1 = "#143A42"
+overlay0 = "#0B242A"
+surface2 = "#06222A"
+surface1 = "#051A1F"
+surface0 = "#001219"
+base = "#071118"
+mantle = "#050D12"
+crust = "#020608"

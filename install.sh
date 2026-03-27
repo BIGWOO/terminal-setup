@@ -37,7 +37,7 @@ install_packages() {
 }
 
 setup_dirs() {
-  mkdir -p "$HOME/.config/starship" "$HOME/.config/ghostty" "$HOME/.config/zsh"
+  mkdir -p "$HOME/.config/starship" "$HOME/.config/ghostty" "$HOME/.config/zsh" "$HOME/.local/bin"
 }
 
 install_configs() {
@@ -48,6 +48,8 @@ install_configs() {
   cp "$ROOT/starship/starship.toml" "$HOME/.config/starship.toml"
   cp "$ROOT/ghostty/config" "$HOME/.config/ghostty/config"
   cp "$ROOT/zsh/zshrc.shared" "$HOME/.config/zsh/zshrc.shared"
+  cp "$ROOT/scripts/switch-starship-theme.sh" "$HOME/.local/bin/terminal-theme"
+  chmod +x "$HOME/.local/bin/terminal-theme"
 
   if [ ! -f "$HOME/.config/zsh/zshrc.local" ]; then
     cp "$ROOT/zsh/zshrc.local.example" "$HOME/.config/zsh/zshrc.local"
@@ -86,6 +88,7 @@ main() {
 
   echo "\nDone. Run: exec zsh"
   echo "If Ghostty icons look wrong, set font to JetBrainsMono Nerd Font."
+  echo "Switch Starship themes with: terminal-theme list / terminal-theme apply tokyo-dusk"
 }
 
 main "$@"

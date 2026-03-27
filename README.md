@@ -42,11 +42,18 @@
 terminal-setup/
 ├─ README.md
 ├─ install.sh
+├─ scripts/
+│  └─ switch-starship-theme.sh
 ├─ zsh/
 │  ├─ zshrc.shared
 │  └─ zshrc.local.example
 ├─ starship/
-│  └─ starship.toml
+│  ├─ starship.toml
+│  └─ themes/
+│     ├─ tokyo-dusk.toml
+│     ├─ nordic-monolith.toml
+│     ├─ deep-sea-trench.toml
+│     └─ vintage-terminal.toml
 └─ ghostty/
    └─ config
 ```
@@ -124,13 +131,12 @@ exec zsh
 
 特色：
 
-- 顯示 `username` / `hostname`
+- 預設主題為 **03 東京黃昏**
+- 顯示 `hostname`、路徑、Git branch / status、常用語言 runtime、時間與耗時
+- `username` 預設低調化，不再永遠大塊顯示
 - `truncation_length = 4`
 - `truncate_to_repo = false`
-- 顯示 Git branch / status
-- 顯示常用語言 runtime
-- 顯示時間與指令耗時
-- 使用 Catppuccin 配色（附 mocha / frappe / latte / macchiato palette）
+- 內建 4 套可切換主題：`tokyo-dusk`、`nordic-monolith`、`deep-sea-trench`、`vintage-terminal`
 
 ### Zsh
 
@@ -206,9 +212,37 @@ font-size = 15
 background-opacity = 0.85
 ```
 
-### 調整 Prompt 模組與配色
+### 切換 Starship 主題
 
-編輯：
+安裝完成後，會附一支 `terminal-theme` 指令。
+
+列出可用主題：
+
+```bash
+terminal-theme list
+```
+
+切換到東京黃昏（預設）：
+
+```bash
+terminal-theme apply tokyo-dusk
+```
+
+切換其他主題：
+
+```bash
+terminal-theme apply nordic-monolith
+terminal-theme apply deep-sea-trench
+terminal-theme apply vintage-terminal
+```
+
+每次切換都會：
+
+- 自動備份目前的 `~/.config/starship.toml`
+- 套用新主題
+- 提醒你執行 `exec zsh`
+
+如果你想手動微調，再編輯：
 
 ```bash
 ~/.config/starship.toml
