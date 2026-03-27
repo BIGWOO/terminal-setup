@@ -37,7 +37,7 @@ install_packages() {
 }
 
 setup_dirs() {
-  mkdir -p "$HOME/.config/starship" "$HOME/.config/ghostty" "$HOME/.config/zsh" "$HOME/.local/bin"
+  mkdir -p "$HOME/.config/starship" "$HOME/.config/ghostty" "$HOME/.config/zsh" "$HOME/.config/terminal-setup/starship/themes" "$HOME/.local/bin"
 }
 
 install_configs() {
@@ -48,6 +48,7 @@ install_configs() {
   cp "$ROOT/starship/starship.toml" "$HOME/.config/starship.toml"
   cp "$ROOT/ghostty/config" "$HOME/.config/ghostty/config"
   cp "$ROOT/zsh/zshrc.shared" "$HOME/.config/zsh/zshrc.shared"
+  cp "$ROOT/starship/themes/"*.toml "$HOME/.config/terminal-setup/starship/themes/"
   cp "$ROOT/scripts/switch-starship-theme.sh" "$HOME/.local/bin/terminal-theme"
   chmod +x "$HOME/.local/bin/terminal-theme"
 

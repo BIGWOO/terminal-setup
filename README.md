@@ -121,6 +121,16 @@ exec zsh
 - `background-opacity = 0.85`
 - `shell-integration = zsh`
 
+### 內建 Starship 主題預覽
+
+| Tokyo Dusk | Nordic Monolith |
+|---|---|
+| ![Tokyo Dusk](docs/images/theme-tokyo-dusk.png) | ![Nordic Monolith](docs/images/theme-nordic-monolith.png) |
+
+| Deep Sea Trench | Vintage Terminal |
+|---|---|
+| ![Deep Sea Trench](docs/images/theme-deep-sea-trench.png) | ![Vintage Terminal](docs/images/theme-vintage-terminal.png) |
+
 ### Starship
 
 設定檔位置：
@@ -239,6 +249,7 @@ terminal-theme apply vintage-terminal
 每次切換都會：
 
 - 自動備份目前的 `~/.config/starship.toml`
+- 從 `~/.config/terminal-setup/starship/themes/` 載入已安裝主題
 - 套用新主題
 - 提醒你執行 `exec zsh`
 

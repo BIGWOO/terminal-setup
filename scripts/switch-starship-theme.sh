@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-THEME_DIR="$ROOT/starship/themes"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -d "$SCRIPT_DIR/../starship/themes" ]; then
+  THEME_DIR="$(cd "$SCRIPT_DIR/../starship/themes" && pwd)"
+else
+  THEME_DIR="$HOME/.config/terminal-setup/starship/themes"
+fi
 TARGET_FILE="$HOME/.config/starship.toml"
 BACKUP_DIR="$HOME/.config/terminal-setup-backups/starship-themes"
+INSTALL_THEME_DIR="$HOME/.config/terminal-setup/starship/themes"
 DEFAULT_THEME="tokyo-dusk"
 
 usage() {
@@ -23,7 +28,7 @@ EOF
 }
 
 ensure_dirs() {
-  mkdir -p "$HOME/.config" "$BACKUP_DIR"
+  mkdir -p "$HOME/.config" "$BACKUP_DIR" "$INSTALL_THEME_DIR"
 }
 
 backup_current() {
@@ -31,16 +36,52 @@ backup_current() {
     local ts
     ts="$(date +%Y%m%d-%H%M%S)"
     cp "$TARGET_FILE" "$BACKUP_DIR/starship.toml.$ts.bak"
-    echo "已備份目前設定到: $BACKUP_DIR/starship.toml.$ts.bak"
   fi
 }
 
+detect_current_theme() {
+  if [ ! -f "$TARGET_FILE" ]; then
+    return 1
+  fi
+
+  local theme
+  for file in "$THEME_DIR"/*.toml; do
+    [ -e "$file" ] || continue
+    theme="$(basename "$file" .toml)"
+    if cmp -s "$file" "$TARGET_FILE"; then
+      printf '%s\n' "$theme"
+      return 0
+    fi
+  done
+
+  return 1
+}
+
 list_themes() {
+  local current_theme=""
+  if current_theme="$(detect_current_theme 2>/dev/null)"; then
+    :
+  else
+    current_theme=""
+  fi
+
   echo "可用 Starship 主題："
   for file in "$THEME_DIR"/*.toml; do
-    basename "$file" .toml
+    [ -e "$file" ] || continue
+    local theme
+    theme="$(basename "$file" .toml)"
+    if [ "$theme" = "$current_theme" ]; then
+      echo "* $theme"
+    else
+      echo "  $theme"
+    fi
   done | sort
   echo
+  if [ -n "$current_theme" ]; then
+    echo "目前主題：$current_theme"
+  else
+    echo "目前主題：自訂或未安裝"
+  fi
   echo "預設主題：$DEFAULT_THEME"
 }
 
@@ -60,7 +101,6 @@ apply_theme() {
   cp "$source_file" "$TARGET_FILE"
 
   echo "已套用 Starship 主題：$theme"
-  echo "設定檔：$TARGET_FILE"
   echo "請執行：exec zsh"
 }
 
